@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap');
+
+body {
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Nanum Pen Script', cursive;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#root {
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.App {
+  min-height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 650px) {
+  .App {
+    width: 640px;
+  }
+}
+
+@media (max-width: 650px) {
+  .App {
+    width: 90vw;
+  }
+}
+
+.route-link {
+  width: 200px;
+  height: 30px;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+/* MyButton */
+
+.MyButton {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-family: 'Nanum Pen Script', cursive;
+  white-space: nowrap;
+}
+
+@mixin myButton($bg-color, $color) {
+  background-color: $bg-color;
+  color: $color;
+}
+
+.MyButton_default {
+  @include myButton(#ececec, black);
+}
+
+.MyButton_positive {
+  @include myButton(#64c964, white);
+}
+
+.MyButton_negative {
+  @include myButton(#fd565f, white);
+}
+
+/* MyHeader */
+
+header {
+  display: flex;
+  padding: 20px 0;
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+  justify-content: space-between;
+  div {
+    display: flex;
+    font-size: 25px;
+    justify-content: center;
+  }
+}
+
+/* DiaryList */
+
+.DiaryList {
+  .menu_wrapper {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    .right_col {
+      flex-grow: 1;
+      button {
+        width: 100%;
+      }
+    }
+  }
+  .ControlMenu {
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ececec;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 18px;
+  }
+}
+
+/* DiaryItem */
+
+@mixin emotionBg($bg-color) {
+  background-color: $bg-color;
+}
+
+.DiaryItem {
+  padding: 15px 0;
+  border-bottom: 1px solid #e2e2e2;
+
+  display: flex;
+  justify-content: space-between;
+
+  .emotion_img_wrapper {
+    cursor: pointer;
+    min-width: 120px;
+    height: 80px;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  @for $i from 1 to 6 {
+    .emotion_img_wrapper_#{$i} {
+      img {
+        width: 50%;
+      }
+      @if $i == 1 {
+        @include emotionBg(#64c964);
+      } @else if $i == 2 {
+        @include emotionBg(#9dd772);
+      } @else if $i == 3 {
+        @include emotionBg(#fdce17);
+      } @else if $i == 4 {
+        @include emotionBg(#fd8446);
+      } @else if $i == 5 {
+        @include emotionBg(#fd565f);
+      }
+    }
+  }
+
+  .info_wrapper {
+    flex-grow: 1;
+    margin-left: 20px;
+    cursor: pointer;
+
+    .diary_date {
+      font-weight: bold;
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    .diary_content_preview {
+      font-size: 18px;
+    }
+
+    .btn_wrapper {
+      min-width: 70px;
+    }
+  }
+}
