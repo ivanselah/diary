@@ -82,11 +82,22 @@ header {
   padding: 20px 0;
   align-items: center;
   border-bottom: 1px solid #e2e2e2;
-  justify-content: space-between;
+
   div {
     display: flex;
     font-size: 25px;
     justify-content: center;
+  }
+  .head_btn_left {
+    justify-content: start;
+    width: 25%;
+  }
+  .head_btn_right {
+    width: 25%;
+    justify-content: end;
+  }
+  .head_text {
+    width: 100%;
   }
 }
 
@@ -119,8 +130,9 @@ header {
 
 /* DiaryItem */
 
-@mixin emotionBg($bg-color) {
+@mixin emotionBg($bg-color, $color: black) {
   background-color: $bg-color;
+  color: $color;
 }
 
 .DiaryItem {
@@ -176,6 +188,90 @@ header {
 
     .btn_wrapper {
       min-width: 70px;
+    }
+  }
+}
+
+/* DiaryEditor */
+
+.DiaryEditor {
+  section {
+    margin-bottom: 40px;
+  }
+  h1 {
+    font-weight: bold;
+  }
+  .input_date {
+    border: none;
+    border-radius: 5px;
+    background-color: #e2e2e2;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 20px;
+  }
+  textarea {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 20px;
+
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 200px;
+    resize: vertical; // 가로 움직임 X
+
+    border: none;
+    border-radius: 5px;
+    background-color: #e2e2e2;
+
+    padding: 20px;
+    &::placeholder {
+      font-size: 20px;
+    }
+  }
+  .control_box {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+/* EmotionItem */
+
+.emotion_list_wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 2%;
+}
+
+.EmotionItem {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e2e2e2;
+  img {
+    width: 50%;
+    margin-bottom: 10px;
+  }
+  span {
+    font-size: 18px;
+  }
+}
+
+@for $i from 1 to 6 {
+  .EmotionItem_on#{$i} {
+    @if $i == 1 {
+      @include emotionBg(#64c964, white);
+    } @else if $i == 2 {
+      @include emotionBg(#9dd772, white);
+    } @else if $i == 3 {
+      @include emotionBg(#fdce17, white);
+    } @else if $i == 4 {
+      @include emotionBg(#fd8446, white);
+    } @else if $i == 5 {
+      @include emotionBg(#fd565f, white);
     }
   }
 }

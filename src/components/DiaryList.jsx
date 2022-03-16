@@ -63,7 +63,7 @@ const DiaryList = ({ diaryList }) => {
           <ControlMenu value={filter} optionList={filterOptionList} onChange={setFilter} />
         </div>
         <div className="right_col">
-          <MyButton type={'positive'} text={'새 일기 쓰기'} onClick={() => navigater('/new')} />
+          <MyButton type={'positive'} text={'새로운 일기 쓰기'} onClick={() => navigater('/new')} />
         </div>
       </div>
       {sortDiaryList().map((item) => (
