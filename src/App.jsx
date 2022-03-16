@@ -107,16 +107,10 @@ function App() {
       <DiaryStateContext.Provider value={data}>
         <DiaryDispatchContext.Provider value={{ onCreate, onRemove, onEdit }}>
           <BrowserRouter>
-            {/* {[1, 2, 3, 4, 5].map((num) => (
-          <img src={process.env.PUBLIC_URL + `/assets/emotion${num}.png`} alt={`emotion${num}`} />
-        ))} */}
-            {/* <MyButton text={'버튼'} onClick={() => alert('버튼클릭')} type={'positive'} />
-            <MyButton text={'버튼'} onClick={() => alert('버튼클릭')} type={'negative'} />
-            <MyButton text={'버튼'} onClick={() => alert('버튼클릭')} /> */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/new" element={<New />} />
-              <Route path="/edit" element={<Edit />} />
+              <Route path="/edit/:id" element={<Edit />} />
               <Route path="/diary/:id" element={<Diary />} />
             </Routes>
           </BrowserRouter>
