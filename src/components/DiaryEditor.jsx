@@ -1,27 +1,11 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DiaryDispatchContext } from '../App';
+import { getStringDate } from '../util/date';
+import { emotionList } from '../util/emotion';
 import EmotionItem from './EmotionItem';
 import MyButton from './MyButton';
 import MyHeader from './MyHeader';
-
-const emotionList = [
-  { no: 1, des: '완전좋음' },
-  { no: 2, des: '좋음' },
-  { no: 3, des: '그럭저럭' },
-  { no: 4, des: '나쁨' },
-  { no: 5, des: '끔찍함' },
-].map((item) => {
-  return {
-    emotion_id: item.no,
-    emotion_img: process.env.PUBLIC_URL + `/assets/emotion${item.no}.png`,
-    emotion_descript: item.des,
-  };
-});
-
-const getStringDate = (date) => {
-  return date.toISOString().slice(0, 10);
-};
 
 const DiaryEditor = ({ isEdit, originData }) => {
   const [date, setDate] = useState(getStringDate(new Date()));
