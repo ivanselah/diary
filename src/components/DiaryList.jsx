@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DiaryItem from './DiaryItem';
 import MyButton from './MyButton';
@@ -14,7 +14,7 @@ const filterOptionList = [
   { value: 'bad', name: '안좋은 감정만' },
 ];
 
-const ControlMenu = ({ value, onChange, optionList }) => {
+const ControlMenu = memo(({ value, onChange, optionList }) => {
   return (
     <select className="ControlMenu" value={value} onChange={(event) => onChange(event.target.value)}>
       {optionList.map((item, index) => (
@@ -24,7 +24,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
       ))}
     </select>
   );
-};
+});
 
 const DiaryList = ({ diaryList }) => {
   const [sortType, setSortType] = useState('latest');
@@ -59,11 +59,11 @@ const DiaryList = ({ diaryList }) => {
     <div className="DiaryList">
       <div className="menu_wrapper">
         <div className="left_col">
-          <ControlMenu value={sortType} optionList={sortOptionList} onChange={setSortType} />{' '}
+          <ControlMenu value={sortType} optionList={sortOptionList} onChange={setSortType} />
           <ControlMenu value={filter} optionList={filterOptionList} onChange={setFilter} />
         </div>
         <div className="right_col">
-          <MyButton type={'positive'} text={'새로운 일기 쓰기'} onClick={() => navigater('/new')} />
+          <MyButton type={'positive'} text={'새로운 일기 쓰기'} onClick={useCallback(() => navigater('/new'), [navigater])} />
         </div>
       </div>
       {sortDiaryList().map((item) => (

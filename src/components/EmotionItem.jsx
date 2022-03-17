@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 const EmotionItem = ({ emotion_id, emotion_img, emotion_descript, onClick, isSelected }) => {
   return (
     <div className={['EmotionItem', isSelected ? `EmotionItem_on${emotion_id}` : `EmotionItem_off`].join(' ')} onClick={() => onClick(emotion_id)}>
@@ -7,4 +9,4 @@ const EmotionItem = ({ emotion_id, emotion_img, emotion_descript, onClick, isSel
   );
 };
 
-export default EmotionItem;
+export default memo(EmotionItem);

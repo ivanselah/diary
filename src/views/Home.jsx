@@ -12,7 +12,7 @@ function Home() {
   useEffect(() => {
     if (diaryList.length > 0) {
       const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getTime();
-      const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getTime();
+      const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0, 23, 59, 59).getTime();
       setData(diaryList.filter((item) => firstDay <= item.date && item.date <= lastDay));
     }
   }, [currentDate, diaryList]);

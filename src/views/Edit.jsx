@@ -10,6 +10,10 @@ function Edit() {
   const diaryList = useContext(DiaryStateContext);
 
   useEffect(() => {
+    document.title = `나만 보는 비밀 일기장 - ${id}번 수정`;
+  }, [id]);
+
+  useEffect(() => {
     if (diaryList.length >= 1) {
       const targetDiary = diaryList.find((item) => Number(item.id) === Number(id));
       if (targetDiary) {
