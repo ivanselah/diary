@@ -40,10 +40,12 @@ function App() {
 
   useEffect(() => {
     const diaryList = localStorage.getItem('diary');
-    if (diaryList.length >= 1 || diaryList) {
-      const diaryListTemp = JSON.parse(diaryList).sort((a, b) => Number(b.id) - Number(a.id));
-      dataId.current = Number(diaryListTemp[0].id) + 1;
-      dispatch({ type: 'INIT', data: JSON.parse(diaryList) });
+    if (diaryList) {
+      if (diaryList.length >= 1) {
+        const diaryListTemp = JSON.parse(diaryList).sort((a, b) => Number(b.id) - Number(a.id));
+        dataId.current = Number(diaryListTemp[0].id) + 1;
+        dispatch({ type: 'INIT', data: JSON.parse(diaryList) });
+      }
     }
   }, []);
 

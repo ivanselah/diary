@@ -17,7 +17,7 @@ function Diary() {
   }, [id]);
 
   useEffect(() => {
-    if (diaryList.length >= 1) {
+    if (diaryList && diaryList.length >= 1) {
       const targetDiary = diaryList.find((item) => Number(item.id) === Number(id));
       if (targetDiary) {
         setData(targetDiary);
