@@ -1,4 +1,4 @@
-# Diary - COVID19, self-quarantine
+#### Diary - COVID19, self-quarantine
 
 자가격리 기간 동안 일기 작성
 배포 : https://ivanselah-diary-project.web.app/
